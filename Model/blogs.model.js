@@ -8,6 +8,7 @@ const blogSchema = new Schema({
   comments: { type: String, default: 0 },
   username: String,
   id: String,
+  avatar: String,
 });
 
 const blogModel = model("blog", blogSchema);
