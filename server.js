@@ -3,6 +3,8 @@ require("dotenv").config();
 const cors = require("cors");
 const { connectDB } = require("./db");
 const { userRouter } = require("./Route/users.route");
+const { blogRouter } = require("./Route/blogs.route");
+const { auth } = require("./Middleware/auth");
 
 const port = process.env.PORT || 8080;
 const app = express();
@@ -13,6 +15,7 @@ app.get("/", (req, res) => {
   res.json({ message: "welcome to blog_app" });
 });
 app.use("/users", userRouter);
+app.use("/blogs", auth, blogRouter);
 
 app.listen(port, async () => {
   try {
